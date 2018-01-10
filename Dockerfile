@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER EasyChen <easychen@gmail.com>
+MAINTAINER EasyChen <easychedn@gmail.com>
 
 # 添加商业软件源
 #deb http://archive.ubuntu.com/ubuntu trusty multiverse
