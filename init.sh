@@ -1,7 +1,6 @@
 #!/bin/bash
 usermod -s /bin/bash www-data
 chown -R  www-data:www-data /var/www
-php /cldata/init.php
 #chmod -R 777 /var/www
 
 service apache2 start
