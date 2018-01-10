@@ -1,6 +1,6 @@
 #!/bin/bash
 usermod -s /bin/bash www-data
-chown -R  www-data:www-data /var/www
+chown -R  www-data:www-data /
 #chmod -R 777 /var/www
 
 service apache2 start
