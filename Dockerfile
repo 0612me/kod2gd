@@ -38,6 +38,7 @@ RUN apt-get install aria2 -y
 #RUN mkdir cldata
 COPY aria2.conf /cldata/aria2.conf
 COPY init.sh /cldata/init.sh
+COPY rclone.conf /cldata/rclone.conf
 COPY on-complete.sh /cldata/on-complete.sh
 RUN chmod +x /cldata/init.sh
 RUN chmod +x /cldata/on-complete.sh
