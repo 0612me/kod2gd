@@ -36,9 +36,11 @@ RUN git clone https://github.com/easychen/KODExplorer.git  /var/www/html
 RUN apt-get install aria2 -y 
 
 #RUN mkdir cldata
-ADD aria2.conf /cldata/aria2.conf
+COPY aria2.conf /cldata/aria2.conf
 COPY init.sh /cldata/init.sh
+COPY on-complete.sh /cldata/on-complete.sh
 RUN chmod +x /cldata/init.sh
+RUN chmod +x /cldata/on-complete.sh
 
 WORKDIR /var/www/html/comic
 
