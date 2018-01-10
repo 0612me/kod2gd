@@ -12,7 +12,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-updates multiverse" >> /et
 RUN apt-get update && apt-get upgrade -y
 
 # 安装unrar
-RUN apt-get install unrar -y
+RUN apt-get install unrar wget unzip -y
 RUN apt-get install p7zip-full p7zip-rar -y
 #RUN apt-get install p7zip-rar -y
 
@@ -20,7 +20,11 @@ RUN apt-get install p7zip-full p7zip-rar -y
 RUN apt-get install apache2 -y
 RUN apt-get install php5 libapache2-mod-php5 php5-mcrypt php5-cli php5-curl php5-gd -y
 
-
+RUN wget https://downloads.rclone.org/rclone-current-linux-amd64.zip && unzip rclone-current-linux-amd64.zip && \
+	chmod 0755 ./rclone-*/rclone && \
+	cp ./rclone-*/rclone /usr/bin/ && \
+	rm -rf ./rclone-*
+  
 # 安装WebApp
 RUN rm -Rf /var/www/html
 
@@ -34,11 +38,9 @@ RUN apt-get install aria2 -y
 #RUN mkdir cldata
 ADD aria2.conf /cldata/aria2.conf
 COPY init.sh /cldata/init.sh
-COPY init.php /cldata/init.php
 RUN chmod +x /cldata/init.sh
 
 WORKDIR /var/www/html/comic
-VOLUME /var/www/html/comic
 
 
 EXPOSE 80 6800
